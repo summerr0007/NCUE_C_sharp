@@ -40,51 +40,50 @@ namespace WindowsFormsApp2
 
         private void button12_Click(object sender, EventArgs e)
         {
-            
             Button bottom = (Button)sender;
-            pre = bottom.Text;
-            if (sum == 0)
-            {
-                sum += Convert.ToDouble(textBox1.Text);
-            }
-            else
-            {
-                switch (bottom.Text)
-                {
-                    case "+":
-                        pre = "+";
-                        sum += Convert.ToDouble(textBox1.Text);
-                        break;
-                    case "-":
-                        pre = "-";
-                        sum -= Convert.ToDouble(textBox1.Text);
-                        break;
-                    case "*":
-                        pre = "*";
-                        sum *= Convert.ToDouble(textBox1.Text);
-                        break;
-                    case "/":
-                        pre = "/";
-                        try
-                        {
-                            sum /= Convert.ToDouble(textBox1.Text);
-                        }
-                        catch
-                        {
-                            textBox1.Text = "error ";
-                        }
 
-                        break;
-                    default:
-                        break;
-                }
+            if (eq)
+            {
+                sum = 0;
             }
+            eq = false;
+//            pre = bottom.Text;
             
-            
+            switch (pre)
+            {
+                case "+":
+                    
+                    sum += Convert.ToDouble(textBox1.Text);
+                    break;
+                case "-":
+                    
+                    sum -= Convert.ToDouble(textBox1.Text);
+                    break;
+                case "*":
+                    
+                    sum *= Convert.ToDouble(textBox1.Text);
+                    break;
+                case "/":
+                    
+                    try
+                    {
+                        sum /= Convert.ToDouble(textBox1.Text);
+                    }
+                    catch
+                    {
+                        textBox1.Text = "error ";
+                    }
+                    break;
+                default:
+                    sum += Convert.ToDouble(textBox1.Text);
+                    break;
+            }
+            pre = bottom.Text;
+
             textBox1.Text = "0";
         }
 
-        private void button16_Click(object sender, EventArgs e)
+            private void button16_Click(object sender, EventArgs e)
         {
             if(textBox1.Text.IndexOf(".") == -1)
             {
@@ -130,6 +129,7 @@ namespace WindowsFormsApp2
             }
             textBox1.Text = sum.ToString();
             eq = true;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -138,6 +138,7 @@ namespace WindowsFormsApp2
             sum = 0;
             textBox1.Text = 0.ToString();
             eq = false;
+            pre = "";
         }
     }
 }
