@@ -204,6 +204,7 @@ namespace WindowsFormsApp3
             this.button12.TabIndex = 17;
             this.button12.Text = "要牌";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button13
             // 
@@ -213,6 +214,7 @@ namespace WindowsFormsApp3
             this.button13.TabIndex = 18;
             this.button13.Text = "不再要牌";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // Form1
             // 
