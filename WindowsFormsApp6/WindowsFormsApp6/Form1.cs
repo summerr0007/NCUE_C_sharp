@@ -195,7 +195,7 @@ namespace WindowsFormsApp6
 
         public override double area()
         {
-            return Math.PI * width ;
+            return Math.PI * width*width ;
         }
 
         public override string show()
