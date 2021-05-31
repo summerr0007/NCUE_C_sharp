@@ -16,7 +16,7 @@ namespace WindowsFormsApp9
         {
             InitializeComponent();
         }
-        node head =null;
+        node head =new node(-1);
         private void Form1_Load(object sender, EventArgs e)
         {
             show();
@@ -87,7 +87,11 @@ namespace WindowsFormsApp9
             node ptr = head;
             do
             {
-                textBox2.Text += "->" + ptr.getdata().ToString();
+                
+                if(ptr.getdata() != -1)
+                {
+                    textBox2.Text += "->" + ptr.getdata().ToString();
+                }
                 if(ptr.getnext() != null){
                     ptr = ptr.getnext();
                 }
@@ -103,7 +107,7 @@ namespace WindowsFormsApp9
         private void button2_Click(object sender, EventArgs e)
         {
             node ptr1 = head;
-            node ptr2 = head.getnext();
+            node ptr2 = head;
             int input = 0;
             try
             {
@@ -120,11 +124,14 @@ namespace WindowsFormsApp9
                 if(ptr2.getdata() == input)
                 {
                     ptr1.setnext(ptr2.getnext());
+                    show();
                     return;
                 }
                 if(ptr2.getdata() > input)
                 {
                     MessageBox.Show("沒有" +input.ToString() +"無法刪除");
+                    show();
+                    return;
                 }
                 ptr1 = ptr2;
                 ptr2 = ptr2.getnext();

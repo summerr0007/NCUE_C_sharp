@@ -125,16 +125,6 @@ namespace WindowsFormsApp10
             }
         }
 
-
-        private node findmax(node ptr)
-        {
-            while(ptr.Right != null)
-            {
-                ptr = ptr.Right;
-            }
-            return ptr;
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             //delete
@@ -152,11 +142,11 @@ namespace WindowsFormsApp10
             button4_Click(this, null);
         }
 
-        private node delete(int n)
+         private node delete(int n)
         {
             node temp;
             node ptr1 = root;
-            node ptr2 = root.Left;
+            node ptr2 = ptr1.Left;
             
             while (ptr2 != null)
             {
@@ -183,13 +173,17 @@ namespace WindowsFormsApp10
             {
                 if (ptr2.Left != null && ptr2.Right != null)
                 {
-                    temp = findmax(ptr2.Left);
+                    temp = ptr2.Left;
+                    while (temp.Right != null)
+                    {
+                        temp = temp.Right;
+                    }
                     ptr2.Data = temp.Data;
                     ptr2.Left = delete(n);
                 }
                 else
                 {
-                    if(ptr2.Left != null)
+                    if(ptr2.Left == null)
                     {
                         ptr2 = ptr2.Right;
                     }
