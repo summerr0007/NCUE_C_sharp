@@ -173,27 +173,56 @@ namespace WindowsFormsApp10
             {
                 if (ptr2.Left != null && ptr2.Right != null)
                 {
+                    int ttq = 0;
                     temp = ptr2.Left;
                     while (temp.Right != null)
                     {
                         temp = temp.Right;
                     }
-                    ptr2.Data = temp.Data;
-                    ptr2.Left = delete(n);
-                }
-                else
+                    ttq = temp.Data;
+                    delete(temp.Data);
+                    ptr2.Data = ttq;
+                   
+                }else if (ptr2.Left != null || ptr2.Right != null)
                 {
-                    if(ptr2.Left == null)
+                    
+                    if (ptr1.Left != null && ptr2.Data == ptr1.Left.Data)
                     {
-                        ptr2 = ptr2.Right;
+                        if (ptr2.Left != null)
+                        {
+                            ptr1.Left = ptr2.Left;
+                        }
+                        else
+                        {
+                            ptr1.Left = ptr2.Right;
+                        }
                     }
                     else
                     {
-                        ptr2 = ptr2.Left;
+                        if (ptr2.Left != null)
+                        {
+                            ptr1.Right = ptr2.Left;
+                        }
+                        else
+                        {
+                            ptr1.Right = ptr2.Right;
+                        }
                     }
                 }
+                else
+                {
+                    if(ptr1.Left != null && ptr2.Data == ptr1.Left.Data )
+                    {
+                        ptr1.Left = null;
+                    }
+                    else
+                    {
+                        ptr1.Right = null;
+                    }
+                    
+                }
             }
-            return ptr2;
+            return null;
         }
     }
 
